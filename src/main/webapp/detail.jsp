@@ -6,38 +6,66 @@
 <head>
 <meta charset="UTF-8">
 <title>詳細</title>
+<!-- Bootstrap CSSをリンク -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <%
     Janies janies = (Janies) request.getAttribute("janies");
     %>
+<div class="container mt-4">
+    <h1 class="mb-4">詳細</h1>
+
     <form action="JaniesServlet" method="post">
-        <label for="name">ID:</label>
-        <input type="text" name="id" value="<%= janies != null ? janies.getId() : "" %>" readonly><br>
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" name="id" class="form-control" value="<%= janies != null ? janies.getId() : "" %>" readonly>
+        </div>
 
-        <label for="name">名前:</label>
-        <input type="text" name="name" value="<%= janies != null ? janies.getName() : "" %>" required><br>
+        <div class="form-group">
+            <label for="name">名前:</label>
+            <input type="text" name="name" class="form-control" value="<%= janies != null ? janies.getName() : "" %>" required>
+        </div>
 
-        <label for="birthday">生年月日:</label>
-        <input type="date" name="birthday" value="<%= janies != null ? janies.getBirthday() : "" %>"><br>
+        <div class="form-group">
+            <label for="birthday">生年月日:</label>
+            <input type="date" name="birthday" class="form-control" value="<%= janies != null ? janies.getBirthday() : "" %>">
+        </div>
 
-        <label for="joinDate">入学日:</label>
-        <input type="date" name="joinDate" value="<%= janies != null ? janies.getJoinDate() : "" %>"><br>
+        <div class="form-group">
+            <label for="joinDate">入学日:</label>
+            <input type="date" name="joinDate" class="form-control" value="<%= janies != null ? janies.getJoinDate() : "" %>">
+        </div>
 
-        <label for="birth_place">出生地:</label>
-        <input type="text" name="homeTown" value="<%= janies != null ? janies.getHomeTown() : "" %>"><br>
+        <div class="form-group">
+            <label for="homeTown">出生地:</label>
+            <input type="text" name="homeTown" class="form-control" value="<%= janies != null ? janies.getHomeTown() : "" %>">
+        </div>
 
-        <label for="blood">血液型:</label>
-        <input type="text" name="bloodType" value="<%= janies != null ? janies.getBloodType() : "" %>"><br>
+        <div class="form-group">
+            <label for="bloodType">血液型:</label>
+            <input type="text" name="bloodType" class="form-control" value="<%= janies != null ? janies.getBloodType() : "" %>">
+        </div>
 
-        <label for="age">年齢:</label>
-        <input type="number" name="age" value="<%= janies != null ? janies.getAge() : "" %>"><br>
+        <div class="form-group">
+            <label for="age">年齢:</label>
+            <input type="number" name="age" class="form-control" value="<%= janies != null ? janies.getAge() : "" %>">
+        </div>
 
-        <label for="color">メンバーカラー:</label>
-        <input type="text" name="memberColor" value="<%= janies != null ? janies.getMemberColor() : "" %>"><br>
+        <div class="form-group">
+            <label for="memberColor">メンバーカラー:</label>
+            <input type="text" name="memberColor" class="form-control" value="<%= janies != null ? janies.getMemberColor() : "" %>">
+        </div>
 
-        <input type="submit" value="更新">
-        <input type="submit" name="delete" value="削除">
+        <button type="submit" class="btn btn-primary">更新</button>
+        <button type="submit" name="delete" class="btn btn-danger">削除</button>
     </form>
+</div>
+
+<!-- Bootstrap JavaScriptをリンク -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
