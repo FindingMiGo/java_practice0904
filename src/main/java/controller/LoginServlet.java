@@ -14,32 +14,36 @@ import dao.EditorDao;
 import exception.JaniesException;
 import model.Editor;
 
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String loginId = request.getParameter("loginid");
-		String loginPassword = request.getParameter("loginPassword");
-		String nextPage = null;
 
-		try {
-			EditorDao editorDao = new EditorDao();
-			Editor editor = editorDao.doLogin(loginId, loginPassword);
+		if ("login".equals(request.getParameter("action"))) {
 
-			HttpSession session = request.getSession();
-			session.setAttribute("editor", editor);
+			String loginId = request.getParameter("loginid");
+			String loginPassword = request.getParameter("loginPassword");
+			String nextPage = null;
 
-			nextPage = "JaniesServlet";
+			try {
+				EditorDao editorDao = new EditorDao();
+				Editor editor = editorDao.doLogin(loginId, loginPassword);
 
-		} catch (JaniesException e) {
-			String message = e.getMessage();
-			request.setAttribute("message", message);
-			request.setAttribute("error", "true");
-			nextPage = "login.jsp";
+				HttpSession session = request.getSession();
+				session.setAttribute("editor", editor);
+
+				nextPage = "JaniesServlet";
+
+			} catch (JaniesException e) {
+				String message = e.getMessage();
+				request.setAttribute("message", message);
+				request.setAttribute("error", "true");
+				nextPage = "login.jsp";
+			}
+
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(nextPage);
+			requestDispatcher.forward(request, response);
 		}
-
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(nextPage);
-		requestDispatcher.forward(request, response);
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -33,14 +33,14 @@
 		<%
 		}
 		%>
-		<form action="LoginServlet" method="post" class="mt-3">
+		<form action="Login" method="post" class="mt-3">
 			<div class="form-group">
 				<label for="loginid">ユーザー名:</label> <input type="text" class="form-control" name="loginid" value="moriyama" required>
 			</div>
 			<div class="form-group">
 				<label for="loginPassword">パスワード:</label> <input type="password" class="form-control" name="loginPassword" value="moriyama" required>
 			</div>
-			<button type="submit" class="btn btn-primary">ログイン</button>
+			<button type="submit" name="action" value="login" class="btn btn-primary">ログイン</button>
 		</form>
 	</div>
 
